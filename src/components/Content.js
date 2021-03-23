@@ -1,20 +1,23 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Style from '../styles/Style';
 import {AppContext} from '../AppProvider';
-import Home from './Home';
-import ComponentsDemo from './demos/ComponentsDemo';
-import EventsDemo from './demos/EventsDemo';
-import FocusDemo from './demos/FocusDemo';
-import ScrollDemo from './demos/ScrollDemo';
-import InputDemo from './demos/InputDemo';
-import VideoDemo from './demos/VideoDemo';
+import {navigate} from '../Navigation';
+import HomeScreen from '../screens/main/HomeScreen';
+import LoginScreen from '../screens/auth/LoginScreen';
 
 const Stack = createStackNavigator();
 
 const Content = () => {
   const [appContext, setAppContext] = useContext(AppContext);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('login');
+    }
+  }, []);
 
   return (
     <View
@@ -32,13 +35,8 @@ const Content = () => {
           unmountInactiveScreen: true,
           detachPreviousScreen: true,
         }}>
-        <Stack.Screen name="home" component={Home} />
-        <Stack.Screen name="components" component={ComponentsDemo} />
-        <Stack.Screen name="events" component={EventsDemo} />
-        <Stack.Screen name="focus" component={FocusDemo} />
-        <Stack.Screen name="scroll" component={ScrollDemo} />
-        <Stack.Screen name="input" component={InputDemo} />
-        <Stack.Screen name="video" component={VideoDemo} />
+        <Stack.Screen name="home" component={HomeScreen} />
+        <Stack.Screen name="login" component={LoginScreen} />
       </Stack.Navigator>
     </View>
   );
@@ -54,7 +52,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   navigator: {
-    width: Style.px(1520),
+    width: Style.px(1920),
     height: Style.px(1080),
   },
   navigatorFullscreen: {

@@ -1,7 +1,5 @@
 import React, {forwardRef} from 'react';
-import {
-  StyleSheet,
-} from 'react-native';
+import {StyleSheet} from 'react-native';
 import Video from 'react-native-video';
 
 const VideoContainer = forwardRef((props, ref) => {

@@ -16,7 +16,7 @@ const App = () => {
     <AppProvider>
       <NavigationContainer ref={navigationRef}>
         <View style={styles.app}>
-          <Menu />
+          {/* <Menu /> */}
           <Content />
         </View>
       </NavigationContainer>
