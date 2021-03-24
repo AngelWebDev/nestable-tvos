@@ -4,8 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {navigationRef} from './Navigation';
 import AppProvider from './AppProvider';
 import Style from './styles/Style';
-import Menu from './components/Menu';
-import Content from './components/Content';
+import Content from './navigations';
 
 // Enable screens
 import {enableScreens} from 'react-native-screens';
